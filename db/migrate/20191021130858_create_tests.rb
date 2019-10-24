@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CreateTests < ActiveRecord::Migration[6.0]
   def change
     create_table :tests do |t|
       t.string :title
-      t.int :level
+      t.integer :level
 
       t.timestamps
     end
