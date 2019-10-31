@@ -10,15 +10,15 @@ categories = Category.create!([
                                  { title: 'Books' }
                              ])
 tests = Test.create!([
-                        { title: 'Batman Quiz', level: '1', category_id: categories[0].id },
-                        { title: 'The Hobbit Quiz', level: '2', category_id: categories[1].id }
+                        { title: 'Batman Quiz', level: '1', category: categories[0], author: user[0]},
+                        { title: 'The Hobbit Quiz', level: '2', category: categories[1], author: user[0]}
                     ])
 questions = Question.create!([
                              { text: 'Who makes Batman\'s suits?' },
                              { text: 'Who killed Smaug?' }
                          ])
 answers = Answer.create!([
-                         { text: 'Alfred Pennyworth', correct: true },
+                           { text: 'Alfred Pennyworth', correct: true },
                          { text: 'Harvey Dent', correct: false },
                          { text: 'Robin', correct: false },
                          { text: 'Bard the Bowman', correct: true },
@@ -29,6 +29,6 @@ answers = Answer.create!([
 users = User.create!([
                         { name: 'user1', password: '111' }, { name: 'user2', password: '222' }
                     ])
-user_test = UserTest.create!([{ user_id: users[0].id, test_id: tests[0].id },
-                             { user_id: users[0].id, test_id: tests[1].id },
-                             { user_id: users[1].id, test_id: tests[0].id }])
+ TestsUser.create!([{ user: users[0], test: tests[0] },
+                             { user: users[0], test: tests[1] },
+                             { user: users[1], test: tests[0]}])
