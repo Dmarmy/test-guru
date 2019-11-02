@@ -5,12 +5,14 @@ class Test < ApplicationRecord
   has_many :tests_users, dependent: :destroy
   has_many :users, through: :tests_users
 
+  validates :title, presence: true, uniqueness: { scope: :level }
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
   scope :easy, -> { where(level: 0..1) }
   scope :normal, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
   scope :level, ->(level) { where(level: level) }
   scope :with_category, ->(category_name) { joins(:category).where(categories: { title: category_name }).order(title: :desc) }
-
 
   def self.test_list
     with_category.pluck(:title)
