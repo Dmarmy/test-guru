@@ -1,14 +1,19 @@
 class Test < ApplicationRecord
   belongs_to :category, optional: true
-  belongs_to :author, class_name: :User, foreign_key: :author_id, optional: true
+  belongs_to :author, class_name: 'User', foreign_key: :author_id, optional: true
   has_many :questions, dependent: :destroy
   has_many :tests_users, dependent: :destroy
   has_many :users, through: :tests_users
-    def self.test_list(category_name)
-      joins(:category)
-        .where(categories: { title: category_name })
-        .order(tests DESC)
-        .pluck(:title)
+
+  scope :easy, -> { where(level: 0..1) }
+  scope :normal, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
+  scope :level, ->(level) { where(level: level) }
+  scope :with_category, ->(category_name) { joins(:category).where(categories: { title: category_name }).order(title: :desc) }
+
+
+  def self.test_list
+    with_category.pluck(:title)
   end
 end
 

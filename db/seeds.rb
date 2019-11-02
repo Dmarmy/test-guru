@@ -10,8 +10,8 @@ categories = Category.create!([
                                  { title: 'Books' }
                              ])
 tests = Test.create!([
-                        { title: 'Batman Quiz', level: '1', category: categories[0], author: user[0]},
-                        { title: 'The Hobbit Quiz', level: '2', category: categories[1], author: user[0]}
+                        { title: 'Batman Quiz', level: '1', category: categories[0],  author: users[0] },
+                        { title: 'The Hobbit Quiz', level: '2', category: categories[1], author: users[0] }
                     ])
 questions = Question.create!([
                              { text: 'Who makes Batman\'s suits?' },
