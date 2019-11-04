@@ -2,7 +2,7 @@ class Answer < ApplicationRecord
   belongs_to :question, optional: true
 
   validates :text, presence: true
-  validates :validate_answers_number
+  validate :validate_answers_number, on: :create
 
   scope :correct_answers, -> { where(correct: true) }
 
