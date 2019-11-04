@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   default_scope { order(title: :asc) }
 
@@ -5,4 +7,3 @@ class Category < ApplicationRecord
 
   validates :title, presence: true
 end
-

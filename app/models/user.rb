@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :tests_users, dependent: :destroy
   has_many :tests, through: :tests_users

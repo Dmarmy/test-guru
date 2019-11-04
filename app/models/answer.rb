@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Answer < ApplicationRecord
-  belongs_to :question, optional: true
+  belongs_to :question
 
   validates :text, presence: true
   validate :validate_answers_number, on: :create
@@ -11,6 +13,6 @@ class Answer < ApplicationRecord
   def validate_answers_number
     return if question.answers.count < 4
 
-    errors.add(:question, 'Not a valid number of answers per question')
+    errors.add(:question_id, 'Not a valid number of answers per question')
   end
 end
