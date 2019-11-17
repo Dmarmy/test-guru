@@ -1,0 +1,8 @@
+ <h1> Result: </h1>
+ <% if @test_passage.passed_successfully? %>
+   <p>Congrats! You passed the <%= @test_passage.test.title %>. Success rate: <span class="success"><%= @test_passage.success_rate %> %</span></p>
+ <% else %>
+   <p>You failed the <%= @test_passage.test.title %>. Success rate: <span class="fail"><%= @test_passage.success_rate %> %</span></p>
+ <% end %>
+
+ <%= link_to 'All tests', tests_path %>
