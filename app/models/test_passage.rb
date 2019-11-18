@@ -1,5 +1,5 @@
 class TestPassage < ApplicationRecord
-  SUCCESS_PASSAGE = 0.85
+  SUCCESS_PASSAGE = 85
 
   belongs_to :user
   belongs_to :test
@@ -25,11 +25,11 @@ class TestPassage < ApplicationRecord
   end
 
   def passed_successfully?
-    correct_questions / number_of_questions >= SUCCESS_PASSAGE
+    success_rate >= SUCCESS_PASSAGE
   end
 
   def success_rate
-    ((correct_questions * 100) / test.questions.count).to_i
+    ((correct_questions * 100) / test.questions.count).to_f
   end
 
   private
