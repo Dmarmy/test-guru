@@ -3,7 +3,6 @@
 class AddNullConstraint < ActiveRecord::Migration[6.0]
   def change
     change_column_null(:tests, :title, false)
-    change_column_null(:users, :name, false)
     change_column_null(:users, :password, false)
     change_column_null(:questions, :text, false)
     change_column_null(:answers, :text, false)
