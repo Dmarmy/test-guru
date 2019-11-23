@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   EMAIL_FORMAT = /\A[a-zA-Z0-9\-_.]+@[a-zA-Z0-9\-_.]+\z/
 
+  has_many :test_passages, dependent: :destroy
+  has_many :tests, through: :test_passages
+  has_many :created_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -8,13 +12,6 @@ class User < ApplicationRecord
          :validatable,
          :trackable,
          :confirmable
-
-  has_many :test_passages, dependent: :destroy
-  has_many :tests, through: :test_passages
-  has_many :created_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
-
-
-  validates :email, presence: true, uniqueness: true, format: { with: EMAIL_FORMAT }
 
   def tests_passed(level)
     tests.where(tests: { level: level })
