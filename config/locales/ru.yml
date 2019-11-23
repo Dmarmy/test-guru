@@ -1,0 +1,10 @@
+ru:
+
+  hello: "Привет, мир"
+  test_passages:
+    gist:
+      success: "Gist успешно сохранён, ссылка:"
+      failure: "Во время сохранения gist произошла ошибка"
+      view_gist: "Посмотреть Gist на GitHub"
+
+    gist_description: "Вопрос про %{test_title} от TestGuru"

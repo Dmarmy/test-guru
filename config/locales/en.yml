@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+
+  test_passages:
+    gist:
+      success: "Gist successfully saved, link: "
+      failure: "An error occurred while saving gist"
+      view_gist: "View Gist on GitHub"
+
+    gist_description: "A question about %{test_title} from TestGuru"
+

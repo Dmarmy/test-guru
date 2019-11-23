@@ -29,7 +29,7 @@ db/.DS_Store
 .DS_Store
 app/.DS_Store
 /config/master.key
-
+.env
 /public/packs
 /public/packs-test
 /node_modules
@@ -40,3 +40,6 @@ yarn-debug.log*
 .byebug_history
 .ruby-version
 .idea
+
+# Ignore application configuration
+/config/application.yml
