@@ -25,11 +25,7 @@ class GistQuestionService
 
     GistResult.new(response)
   end
-
-  def success?
-    @client.last_response.data.html_url.present?
-  end
-
+  
   private
 
   def gist_params
