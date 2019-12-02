@@ -16,6 +16,10 @@ class TestPassage < ApplicationRecord
     test.questions.count
   end
 
+  def progress
+    test.questions.index(current_question) + 1
+  end
+
   def current_question_number
     test.questions.order(:id).where('id < ?', current_question.id).count + 1
   end

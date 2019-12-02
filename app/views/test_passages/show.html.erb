@@ -1,4 +1,8 @@
 <h1>Passing the <%= @test_passage.test.title %> </h1>
+<%= content_tag :div, class: 'passage-progress', data: {questions_amount: @test_passage.number_of_questions} do %>
+  <%= content_tag :div, class: 'progress-bar', data: {question: @test_passage.progress} do %>
+  <% end %>
+<% end %>
 
 <p>
   <b><%= @test_passage.current_question.text %></b>

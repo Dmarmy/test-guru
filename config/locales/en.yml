@@ -40,3 +40,8 @@ en:
 
     gist_description: "A question about %{test_title} from TestGuru"
 
+  admin:
+    tests:
+      form_inline:
+        submit: "OK"
+
