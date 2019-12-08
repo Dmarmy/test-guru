@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :created_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
   has_many :gists, dependent: :destroy
+  has_many :user_badges, dependent: :delete_all
+  has_many :badges, through: :user_badges
 
   devise :database_authenticatable,
          :registerable,
@@ -20,6 +22,10 @@ class User < ApplicationRecord
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test: test)
+  end
+
+  def successful_tests
+    self.test_passages.where(current_question: nil).select(&:passed_successfully?)
   end
 
   def admin?

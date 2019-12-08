@@ -9,6 +9,8 @@ Rails.application.routes.draw do
              path_names: { sign_in: :login, sign_out: :logout }
 
 
+  resources :badges, only: :index
+  get 'show_all', to: 'badges#show_all'
 
   resources :tests, only: :index do
     member do
@@ -32,5 +34,6 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: :index
+    resources :badges
   end
 end
