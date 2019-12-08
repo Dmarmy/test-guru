@@ -25,12 +25,12 @@ class Admin::AnswersController < Admin::BaseController
       redirect_to admin_answer_path(@answer)
     else
       render :edit
-  end
+    end
   end
 
   def destroy
     @answer.destroy
-    redirect_to  redirect_to admin_question_path(@answer.question)
+    redirect_to admin_question_path(@answer.question)
   end
 
   private

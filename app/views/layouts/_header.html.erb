@@ -1,15 +1,16 @@
-<header class="header">
-  <div class="nav user">
+<nav class="navbar">
     <h2><%= link_to "Test-Guru", root_path %></h2>
-  </div>
 
-  <div class="nav user">
+  <span class="navbar-text">
+
     <% if user_signed_in? %>
       Welcome, <b><%= current_user.email %></b> Guru |
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <%= link_to 'Badges', badges_path, class: 'badge badge-primary' %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'badge badge-primary' %>
     <% else %>
-      <%= link_to 'Signup', new_user_registration_path %> |
-      <%= link_to 'Login',  new_user_session_path %>
+      <%= link_to 'Signup', new_user_registration_path, class: 'badge badge-primary' %>
+      <%= link_to 'Login',  new_user_session_path, class: 'badge badge-primary' %>
     <% end %>
-  </div>
-</header>
+
+  </span>
+</nav>
